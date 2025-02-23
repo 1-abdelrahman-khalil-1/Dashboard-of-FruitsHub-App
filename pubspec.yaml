@@ -1,0 +1,36 @@
+name: dashboard
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  dartz: ^0.10.1
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.0.0
+  flutter_screenutil: ^5.9.3
+  get_it: ^8.0.3
+  image_picker: ^1.1.2
+  path: ^1.9.0
+  supabase_flutter: ^2.8.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  fonts:
+  - family: Cairo
+    fonts:
+      - asset: assets/fonts/Cairo-Regular.ttf
+      - asset: assets/fonts/Cairo-Bold.ttf
+        weight: 700
+      - asset: assets/fonts/Cairo-SemiBold.ttf
+        weight: 600
+      - asset: assets/fonts/Cairo-Medium.ttf
+        weight: 500  
