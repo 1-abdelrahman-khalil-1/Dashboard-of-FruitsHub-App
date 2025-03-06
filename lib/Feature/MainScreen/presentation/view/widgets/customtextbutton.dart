@@ -5,35 +5,32 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
-    super.key, required this.show, required this.text, this.onpressed,
+    super.key,  required this.text, this.onpressed,
     
   });
 
-  final bool show;
+
   final String text;
   final onpressed;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
      onTap: onpressed,
-      child: Visibility(
-       visible: show,
-        child: Container(
-         width: 343.w,
-         padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 15),
-         decoration: ShapeDecoration(
-           color: Appcolors.kgreen,
-           shape: RoundedRectangleBorder(
-             borderRadius: BorderRadius.circular(16.r),
-           ),
+      child: Container(
+       width: 343.w,
+       padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 15),
+       decoration: ShapeDecoration(
+         color: Appcolors.kgreen,
+         shape: RoundedRectangleBorder(
+           borderRadius: BorderRadius.circular(16.r),
          ),
-         child: Text(
-               text,
-               textAlign: TextAlign.center,
-               style: AppTextStyles.semiBold16.copyWith(color: Colors.white),
-             ),
-                ),
-      ),
+       ),
+       child: Text(
+             text,
+             textAlign: TextAlign.center,
+             style: AppTextStyles.semiBold16.copyWith(color: Colors.white),
+           ),
+              ),
     );
   }
 }

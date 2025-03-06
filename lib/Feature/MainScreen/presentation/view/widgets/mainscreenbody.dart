@@ -1,4 +1,3 @@
-
 import 'package:dashboard/Core/helperFunctions/bar.dart';
 import 'package:dashboard/Feature/MainScreen/data/model/productmodel.dart';
 import 'package:dashboard/Feature/MainScreen/presentation/cubit/product_cubit.dart';
@@ -125,47 +124,67 @@ class _MainscreenbodyState extends State<Mainscreenbody> {
                 text: "Organic",
               ),
               Uploadimage(
-                onImageSelected: () =>setState(() {
-                   image = true;
+                onImageSelected: () => setState(() {
+                  image = true;
                 }),
                 onImageRemoved: () => setState(() {
                   image = false;
                 }),
               ),
               SizedBox(height: 16.h),
-              CustomTextButton(
-                show: true,
-                text: "Submit",
-                onpressed: () {
-                  if(!image)
-                  {
-                  bar(context, message: "Please Add an image");
-                  }
-                 else if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    Productmodel product = Productmodel(
-                      id: productID,
-                      name: name,
-                      price: price,
-                      description: description,
-                      organic: organic,
-                      calories: calories,
-                      imageUrl: "",
-                      category: (fruit) ? "Fruit" : "Vegetable",
-                    );
-                    context.read<ProductCubit>().uploadData(data: product.toMap(product));
-                  } else {
-                    bar(context, message: "Please fill all fields");
-                    setState(() {
-                      autovalidateMode = AutovalidateMode.always;
-                    });
-                  }
-                },
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextButton(
+                      text: "Submit",
+                      onpressed: () {
+                        if (!image) {
+                          bar(context, message: "Please Add an image");
+                        } else if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
+                          Productmodel product = Productmodel(
+                            id: productID,
+                            name: name,
+                            price: price,
+                            description: description,
+                            organic: organic,
+                            calories: calories,
+                            imageUrl: "",
+                            category: (fruit) ? "Fruit" : "Vegetable",
+                          );
+                          context
+                              .read<ProductCubit>()
+                              .uploadData(data: product.toMap(product));
+                        } else {
+                          bar(context, message: "Please fill all fields");
+                          setState(() {
+                            autovalidateMode = AutovalidateMode.always;
+                          });
+                        }
+                      },
+                    ),
+                  ),
+                  SizedBox(width: 10.w,),
+                  Expanded(
+                    child: CustomTextButton(
+                      text: "Reset",
+                      onpressed: clear,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void clear() {
+    nameController.clear();
+    productIDController.clear();
+    priceController.clear();
+    descriptionController.clear();
+    caloriesController.clear();
   }
 }

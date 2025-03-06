@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dashboard/Core/service/get_it_setup.dart';
 import 'package:dashboard/Core/utils/assets/appcolors.dart';
+import 'package:dashboard/Core/utils/assets/fontasset.dart';
 import 'package:dashboard/Feature/MainScreen/data/repo/productrepo.dart';
 import 'package:dashboard/Feature/MainScreen/presentation/cubit/product_cubit.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +69,8 @@ class _UploadimageState extends State<Uploadimage> {
           ,
           child: const Text("Add Product's Image"),
         ),
+        SizedBox(height: 10.h),
+         Text("The image must be less than 2MB" ,style: AppTextStyles.bold13.copyWith(color: Colors.green[900]),),
       ],
     );
   }
